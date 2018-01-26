@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="material-icons">settings_bluetooth</i>JCC iBeacon Tracker</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Track</a></li>
+        <li><a href="#">Register</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <!-- body section -->
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      
+	  <ul class="collection" id="beaconsList">
+		<li v-for="beacon in beacons" class="collection-item avatar">
+		  <i class="circle green"><b>{{beacon.asset.group_id}}</b></i>
+		  <div class="row">
+		  <div class="col s6">
+		  <span class="title"><b>{{beacon.asset.asset_name}}</b></span>
+		  <p>{{beacon.asset.group_name}} <br>
+		  </p>
+		  </div>
+		  
+			<div style="text-align: right" class="col s5">
+				<span style="">
+					<span v-if="! beacon.active">{{beacon.lastSeen_friendly}}</span>  <br> 
+					{{beacon.locationLast_name}}
+					</span>
+			</div>
+			<div style="text-align: right" class="col s1">
+				<i v-if="beacon.active" class="material-icons small">wifi_tethering</i>
+				<span v-if="! beacon.active" style="font-color: red;"><i class="material-icons small">portable_wifi_off</i></span>
+			</div>
+			</div>
+		</li>
+	  </ul>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+
+    </div>
+    <br><br>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://momentjs.com/downloads/moment.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>

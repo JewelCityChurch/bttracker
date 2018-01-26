@@ -1,0 +1,27 @@
+<% include partials/header %>
+<main>
+<div class="jumbotron">
+	<h2>Hello EJS!</h2>
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Last Sensor</th>
+      <th scope="col">Last Sensor</th>
+      <th scope="col">Last Seen</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% encounters.forEach(function(encounter){ %>
+    <tr>
+      <th scope="row"><%= encounter.bID %></th>
+      <td></td>
+	  <td><%= encounter.sensor_id %></td>
+      <td><%= encounter.lastSeen %></td>
+    </tr>
+	<% }); %>
+  </tbody>
+</table>
+</div>
+</main>
+<% include partials/footer %>
